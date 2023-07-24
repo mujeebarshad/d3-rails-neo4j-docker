@@ -1,0 +1,39 @@
+<div class='container-fluid mb-2'>
+  <h2 class='mt-2'>Relationsips</h2>
+  <% @product.reflections.each do |association_name, _association_instance| %>
+    <div class="card mt-5">
+      <a data-bs-toggle="collapse" data-bs-target="#collapseDiv_<%= association_name %>" aria-expanded="true" aria-controls="collapseDiv_<%= association_name %>" class='card-link'>
+        <div class="card-header">
+          <h5><%= association_name.to_s.capitalize %></h5>
+        </div>
+      </a>
+      <div class="card-body" class="collapse" id="collapseDiv_<%= association_name %>">
+        <table class="table table-striped table-borderless table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% is_collection = @product.send(association_name).is_a?(Enumerable) %>
+            <% if is_collection %> 
+              <% @product.send(association_name).each do |object| %>
+                <tr>
+                  <td><%= object.uid %></td>
+                  <td><%= object.name %></td>
+                </tr>
+              <% end %>
+            <% else%>
+              <% single_object = @product.send(association_name) %>
+              <tr>
+                <td><%= single_object.uid %></td>
+                <td><%= single_object.name %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+<div>

@@ -1,0 +1,100 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  margin-top: 20px;
+}
+
+.bg-light-primary {
+  background-color: #f9fbff !important;
+}
+
+.pb-6,
+.py-6 {
+  padding-bottom: 3.75rem !important;
+}
+
+.pt-6,
+.py-6 {
+  padding-top: 3.75rem !important;
+}
+
+.hover-scale,
+.hover-scale:hover {
+  transition: transform .2s ease-in;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, .125);
+  border-radius: .4rem;
+  box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1.25rem;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-link:hover {
+  text-decoration: none;
+}
+
+.custom-divider {
+  border-left: 1px solid #969696;
+  height: 40px;
+  margin-left: 10px
+}
+
+td {
+  width: 50%
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+.graph-container {
+  border: 2px solid #969696;
+  border-radius: 5px;
+  background-color: #F0F1F3;
+  margin: 20px
+}
+
+.how-to-use-btn {
+  position: absolute !important;
+  top: 90px !important;
+  left: 30px !important;
+}
+
+.zoom-btn-group {
+  position: absolute !important;
+  top: 90px !important;
+  right: 30px !important;
+}

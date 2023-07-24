@@ -1,0 +1,21 @@
+<div id='graph_relationships' class='graph-container' data-nodes-links="<%= @graph_nodes_links.to_json %>"></div>
+<button id="how_to_use_popover" type="button" class="btn btn-light how-to-use-btn" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-trigger="focus" >
+  <i class="fa fa-question-circle" aria-hidden="true"></i> How to use
+</button>
+<div class='zoom-btn-group'>
+  <a type="button" href='#' class="btn btn-light rounded-circle mb-2" id='zoom_in' title='Focus In'><i class="fa fa-plus" aria-hidden="true"></i></a><br>
+  <a type="button" href='#' class="btn btn-light rounded-circle mb-2" id='zoom_out' title='Focus Out'><i class="fa fa-minus" aria-hidden="true"></i></a><br>
+  <a type="button" href='#' class="btn btn-light rounded-circle " id='reset_zoom' title='Focus Reset'><i class="fa fa-redo" aria-hidden="true"></i></a>
+</div>
+
+<script>
+  $(function () {
+    $('#how_to_use_popover').popover({
+      container: 'body',
+      placement: 'right',
+      html: true,
+      content: '<%= escape_javascript(render partial: "shared/info_popover") %>'
+    })
+  })
+</script>
+<%= javascript_include_tag 'product' %>

@@ -1,0 +1,24 @@
+<div class='container bg-light-primary'>
+  <div class='row'>
+    <h1 class="my-4">Products</h1>
+  </div>
+  <section class="py-3">
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 text-center justify-content-center px-xl-6 aos-init aos-animate" data-aos="fade-up">
+      <% @products.each_with_index do |product, index| %>
+        <div class="col my-3">
+          <%= link_to product_path(product), class: "card-link" do %>
+            <div class="card border-hover-primary hover-scale">
+              <div class="card-body">
+                  <div class="mb-5" style='color: #198774'>
+                    <i class="fa fa-3x fa-archive"></i>
+                  </div>
+                  <h6 class="font-weight-bold mb-3"><%= product.title %></h6>
+                  <p class="text-muted mb-0"><%= product.brand %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+</div>

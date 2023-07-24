@@ -1,0 +1,7 @@
+<%= render 'shared/navbar', { product_name: @product.title } %>
+
+<% if params[:selected_view]&.to_sym == :list_view %>
+  <%= render 'shared/list_view', { product_name: @product.title } %>
+<%else%>
+  <%= render 'shared/graph_view', { product_name: @product.title } %>
+<%end%>

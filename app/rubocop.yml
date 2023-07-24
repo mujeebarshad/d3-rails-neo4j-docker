@@ -1,0 +1,4 @@
+Layout/LineLength: # for Rubocop >= 0.78.0
+  # This will disable the rule completely, regardless what other options you put
+  Enabled: false
+  # Change the default 80 chars limit value
