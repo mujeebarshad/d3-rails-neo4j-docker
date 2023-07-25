@@ -107,12 +107,12 @@ function update(data){
   // On hover show the visibility of relationship
   .on("mouseover", function() {
     d3.selectAll(`#relation_${this.__data__.id}`).style('visibility', 'visible');
-  d3.selectAll(`#line_${this.__data__.id}`).style('stroke', TEXT_COLOR);
-    })
+    d3.selectAll(`#line_${this.__data__.id}`).style('stroke', TEXT_COLOR);
+  })
   .on("mouseout", function(){
     nodeRel.style("visibility", "hidden");
-  d3.selectAll(`#line_${this.__data__.id}`).style('stroke', ICON_COLOR);
-    })
+    d3.selectAll(`#line_${this.__data__.id}`).style('stroke', ICON_COLOR);
+  })
   // On node click toggle children nodes
   .on('click', function(){toggleChildren(this.__data__)});
 
@@ -129,18 +129,18 @@ function update(data){
   .text(function(d) { return String.fromCodePoint(parseInt(d.icon, 16))})
   .on("mouseover", function() {
     d3.selectAll(`#relation_${this.__data__.id}`).style('visibility', 'visible');
-  d3.selectAll(`#line_${this.__data__.id}`).style('stroke', TEXT_COLOR)
-        })
+    d3.selectAll(`#line_${this.__data__.id}`).style('stroke', TEXT_COLOR)
+   })
   .on("mouseout", function(){
     nodeRel.style("visibility", "hidden");
-  d3.selectAll(`#line_${this.__data__.id}`).style('stroke', ICON_COLOR);
-        })
+    d3.selectAll(`#line_${this.__data__.id}`).style('stroke', ICON_COLOR);
+  })
   .on('click', function(d){toggleChildren(this.__data__)});
 
   // Append rectangles for the nodes label
   nodeRect = svg.append("g")
   .selectAll("rect")
-        .data(data.nodes.filter(n => n.show))
+  .data(data.nodes.filter(n => n.show))
   .enter()
   .append("rect")
   .attr("height", '20px')
@@ -265,8 +265,8 @@ function toggleChildren(d) {
   }
   else
   {
-    if (!d.cache) {
-      fetch_relationships(d.id);
+    if (!d.cache && d.hasChildren) {
+      fetchRelationships(d.id);
       d.cache = true;
     }
     toggleVisibilityOfNodesAndLinks(d.id, true);
@@ -330,7 +330,7 @@ function toggleVisibilityOfNodesAndLinks(d, visibility){
   }
 };
 
-function fetch_relationships(element) {
+function fetchRelationships(element) {
   var typeId = element.split("_");
   var id = typeId[0];
   var type = typeId[1].toLowerCase();
@@ -341,7 +341,6 @@ function fetch_relationships(element) {
     url: `/${CONTROLLER_PATH[type]}/${id}.json`,
     dataType: 'json',
     success: function (result) {
-      debugger
       if (result.nodes.length > 0) data.nodes = data.nodes.concat(...removeExistingNodes(data.nodes, result.nodes));
       if (result.links.length > 0) data.links = data.links.concat(...removeExistingLinks(data.links, result.links));
     }
